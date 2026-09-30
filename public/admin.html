@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Panel de administración · CIPSA</title>
+  <link rel="icon" href="/img/icon.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="barra">
+    <div class="barra-in">
+      <img src="/img/logo.png" alt="Corporación de Industrias Plásticas S.A.">
+      <div class="meta" id="salir-wrap" hidden><button class="ico" id="salir">Cerrar sesión</button></div>
+    </div>
+    <div class="franja"></div>
+  </div>
+
+  <div id="login" class="login" hidden>
+    <form class="tarjeta" id="form-login">
+      <h1>Panel de administración</h1>
+      <p>Ingresa la contraseña de Recursos Humanos.</p>
+      <div class="campo"><label for="pass">Contraseña</label><input type="password" id="pass" autocomplete="current-password" required></div>
+      <div class="aviso" id="login-err" hidden style="margin-top:14px"></div>
+      <button class="btn btn-pri" style="width:100%;margin-top:18px">Ingresar</button>
+    </form>
+  </div>
+
+  <main id="panel" class="admin" hidden>
+    <div class="admin-cab">
+      <div>
+        <h1>Registros de personal</h1>
+        <p>Cada persona tiene un único PDF con sus documentos de ingreso. El archivo lleva su código.</p>
+      </div>
+      <div class="contadores"><div><b id="c-total">0</b>registros</div><div><b id="c-hoy">0</b>hoy</div></div>
+    </div>
+    <div class="pestanas"><button class="on" data-tab="lista">Registros</button><button data-tab="config">Formulario</button><button data-tab="enlace">Enlace para compartir</button></div>
+
+    <section id="tab-lista">
+      <div class="herr">
+        <label class="buscador"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" placeholder="Buscar por nombre, código o documento" aria-label="Buscar"></label>
+        <button class="ico" id="zip-sel" disabled>Descargar seleccionados (ZIP)</button>
+        <a class="ico" href="/api/admin/exportar.csv">Exportar a Excel (CSV)</a>
+      </div>
+      <div class="tabla-wrap">
+        <table class="tabla">
+          <thead><tr><th style="width:36px"><input type="checkbox" class="chk" id="sel-todo" aria-label="Seleccionar todo"></th><th>Código</th><th>Nombre</th><th>Fecha y hora</th><th>Estado</th><th style="text-align:right">Documentos</th></tr></thead>
+          <tbody id="filas"></tbody>
+        </table>
+        <div class="vacio" id="vacio" hidden>Aún no hay registros. Comparte el enlace del formulario para empezar.</div>
+      </div>
+    </section>
+
+    <section id="tab-config" hidden>
+      <div class="tarjeta">
+        <header><h2>Campos del formulario</h2></header>
+        <p class="desc" style="margin-top:0">Aquí puedes agregar, quitar o renombrar campos. Los campos nuevos se guardan y se ven en el panel y en la exportación; para que aparezcan en un PDF hay que agregarlos al mapeo del documento (<code>config/documentos.js</code>). No cambies el <code>key</code> de los campos existentes: los documentos lo usan.</p>
+        <textarea class="json" id="json" spellcheck="false"></textarea>
+        <div class="acciones"><button class="btn btn-sec" id="restaurar">Restaurar formulario original</button><button class="btn btn-pri" id="guardar-json">Guardar cambios</button></div>
+      </div>
+    </section>
+
+    <section id="tab-enlace" hidden>
+      <div class="tarjeta">
+        <header><h2>Enlace para las personas</h2></header>
+        <p class="desc" style="margin-top:0">Envía este enlace por WhatsApp o correo. Todas las personas usan el mismo enlace; cada registro recibe su propio código.</p>
+        <div class="docs"><span class="arch" id="enlace"></span><button class="ico pri" id="copiar">Copiar enlace</button></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
+    <div class="caja">
+      <header><div><div class="cod" id="m-cod" style="font-family:var(--t-titulo);font-weight:700;color:var(--rojo-osc)"></div><h2 id="m-nom"></h2><div class="sub" id="m-fecha" style="color:var(--gris);font-size:14px"></div></div><button class="cerrar" id="cerrar" aria-label="Cerrar">✕</button></header>
+      <div class="cuerpo" id="m-cuerpo"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="/admin.js"></script>
+</body>
+</html>

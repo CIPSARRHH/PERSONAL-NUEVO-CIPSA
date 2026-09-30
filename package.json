@@ -1,0 +1,21 @@
+{
+  "name": "cipsa-registro-personal",
+  "version": "1.0.0",
+  "description": "Ficha de ingreso de personal CIPSA con generación automática de documentos PDF",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "ejemplo": "node scripts/ejemplo.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.22.3",
+    "jszip": "^3.10.2",
+    "pdf-lib": "^1.17.1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "private": true
+}

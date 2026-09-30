@@ -1,0 +1,171 @@
+{
+  "titulo": "Ficha de ingreso de personal",
+  "subtitulo": "Completa tus datos una sola vez. Con ellos se prepararán tus documentos de ingreso.",
+  "secciones": [
+    {
+      "id": "personales",
+      "titulo": "Datos personales",
+      "icono": "user",
+      "campos": [
+        { "key": "nombres", "label": "Nombres", "tipo": "texto", "requerido": true, "ancho": "completo" },
+        { "key": "apellidoPaterno", "label": "Apellido paterno", "tipo": "texto", "requerido": true },
+        { "key": "apellidoMaterno", "label": "Apellido materno", "tipo": "texto", "requerido": true },
+        { "key": "tipoDocumento", "label": "Tipo de documento", "tipo": "seleccion", "requerido": true, "opciones": ["DNI", "Carné de extranjería", "Pasaporte"] },
+        { "key": "numeroDocumento", "label": "Número de documento", "tipo": "texto", "requerido": true, "validacion": "documento" },
+        { "key": "nacionalidad", "label": "Nacionalidad", "tipo": "texto", "requerido": true, "valorInicial": "Peruana" },
+        { "key": "estadoCivil", "label": "Estado civil", "tipo": "seleccion", "requerido": true, "opciones": ["Soltero(a)", "Casado(a)", "Conviviente", "Divorciado(a)", "Viudo(a)"] },
+        { "key": "sexo", "label": "Sexo", "tipo": "opciones", "requerido": true, "opciones": ["Masculino", "Femenino"] },
+        { "key": "fechaNacimiento", "label": "Fecha de nacimiento", "tipo": "fecha", "requerido": true },
+        { "key": "nacDepartamento", "label": "Departamento de nacimiento", "tipo": "texto", "requerido": true },
+        { "key": "nacProvincia", "label": "Provincia de nacimiento", "tipo": "texto", "requerido": true },
+        { "key": "nacDistrito", "label": "Distrito de nacimiento", "tipo": "texto", "requerido": true },
+        { "key": "cargoPostula", "label": "Cargo o puesto al que ingresas", "tipo": "texto", "requerido": true, "ancho": "completo", "ayuda": "Se usa en el Compromiso de confidencialidad." }
+      ]
+    },
+    {
+      "id": "contacto",
+      "titulo": "Contacto y domicilio",
+      "icono": "home",
+      "campos": [
+        { "key": "celular", "label": "Celular", "tipo": "telefono", "requerido": true },
+        { "key": "telefonoFijo", "label": "Teléfono fijo", "tipo": "telefono" },
+        { "key": "email", "label": "Correo electrónico", "tipo": "correo", "requerido": true, "ancho": "completo" },
+        { "key": "direccion", "label": "Dirección de residencia", "tipo": "texto", "requerido": true, "ancho": "completo", "placeholder": "Av. / Jr. / Calle, número, urbanización o asentamiento" },
+        { "key": "distrito", "label": "Distrito", "tipo": "texto", "requerido": true },
+        { "key": "provincia", "label": "Provincia", "tipo": "texto", "requerido": true, "valorInicial": "Lima" },
+        { "key": "departamento", "label": "Departamento", "tipo": "texto", "requerido": true, "valorInicial": "Lima" },
+        { "key": "numeroPasaporte", "label": "N.° de pasaporte (si tienes)", "tipo": "texto" },
+        { "key": "brevete", "label": "N.° de brevete (si tienes)", "tipo": "texto" },
+        { "key": "emergencia", "label": "Contacto en caso de emergencia", "tipo": "grupo", "min": 1, "max": 2, "requerido": true,
+          "campos": [
+            { "key": "nombre", "label": "Nombre y apellido", "tipo": "texto", "requerido": true },
+            { "key": "telefono", "label": "Teléfono", "tipo": "telefono", "requerido": true },
+            { "key": "direccion", "label": "Dirección", "tipo": "texto" }
+          ] }
+      ]
+    },
+    {
+      "id": "familia",
+      "titulo": "Familia",
+      "icono": "users",
+      "descripcion": "Completa solo lo que corresponda. Puedes dejar en blanco lo que no aplique.",
+      "campos": [
+        { "key": "padre", "label": "Padre", "tipo": "grupo", "min": 0, "max": 1,
+          "campos": [
+            { "key": "apellidos", "label": "Apellidos", "tipo": "texto" },
+            { "key": "nombres", "label": "Nombres", "tipo": "texto" },
+            { "key": "fechaNac", "label": "Fecha de nacimiento", "tipo": "fecha" },
+            { "key": "documento", "label": "DNI / otro documento", "tipo": "texto" }
+          ] },
+        { "key": "madre", "label": "Madre", "tipo": "grupo", "min": 0, "max": 1,
+          "campos": [
+            { "key": "apellidos", "label": "Apellidos", "tipo": "texto" },
+            { "key": "nombres", "label": "Nombres", "tipo": "texto" },
+            { "key": "fechaNac", "label": "Fecha de nacimiento", "tipo": "fecha" },
+            { "key": "documento", "label": "DNI / otro documento", "tipo": "texto" }
+          ] },
+        { "key": "hermanos", "label": "Hermanos(as)", "tipo": "grupo", "min": 0, "max": 4,
+          "campos": [
+            { "key": "apellidos", "label": "Apellidos", "tipo": "texto" },
+            { "key": "nombres", "label": "Nombres", "tipo": "texto" },
+            { "key": "fechaNac", "label": "Fecha de nacimiento", "tipo": "fecha" },
+            { "key": "documento", "label": "DNI / otro documento", "tipo": "texto" }
+          ] },
+        { "key": "conyuge", "label": "Cónyuge o conviviente", "tipo": "grupo", "min": 0, "max": 1,
+          "campos": [
+            { "key": "apellidos", "label": "Apellidos", "tipo": "texto" },
+            { "key": "nombres", "label": "Nombres", "tipo": "texto" },
+            { "key": "sexo", "label": "Sexo", "tipo": "seleccion", "opciones": ["M", "F"] },
+            { "key": "fechaNac", "label": "Fecha de nacimiento", "tipo": "fecha" },
+            { "key": "documento", "label": "DNI / otro documento", "tipo": "texto" }
+          ] },
+        { "key": "hijos", "label": "Hijos(as)", "tipo": "grupo", "min": 0, "max": 5,
+          "campos": [
+            { "key": "apellidos", "label": "Apellidos", "tipo": "texto" },
+            { "key": "nombres", "label": "Nombres", "tipo": "texto" },
+            { "key": "sexo", "label": "Sexo", "tipo": "seleccion", "opciones": ["M", "F"] },
+            { "key": "fechaNac", "label": "Fecha de nacimiento", "tipo": "fecha" },
+            { "key": "documento", "label": "DNI / otro documento", "tipo": "texto" }
+          ] }
+      ]
+    },
+    {
+      "id": "estudios",
+      "titulo": "Estudios",
+      "icono": "book",
+      "campos": [
+        { "key": "nivelEstudios", "label": "Grado académico / nivel de estudios alcanzado", "tipo": "seleccion", "requerido": true, "ancho": "completo",
+          "opciones": ["Primaria completa", "Secundaria incompleta", "Secundaria completa", "Técnico en curso", "Técnico completo", "Universitario en curso", "Universitario completo", "Bachiller", "Titulado", "Maestría", "Doctorado"] },
+        { "key": "primaria", "label": "Primaria", "tipo": "grupo", "min": 0, "max": 1,
+          "campos": [ { "key": "centro", "label": "Centro educativo", "tipo": "texto" }, { "key": "fechas", "label": "Años (inicio – término)", "tipo": "texto", "placeholder": "2005 – 2010" } ] },
+        { "key": "secundaria", "label": "Secundaria", "tipo": "grupo", "min": 0, "max": 1,
+          "campos": [ { "key": "centro", "label": "Centro educativo", "tipo": "texto" }, { "key": "fechas", "label": "Años (inicio – término)", "tipo": "texto", "placeholder": "2011 – 2015" } ] },
+        { "key": "comercial", "label": "Estudios comerciales", "tipo": "grupo", "min": 0, "max": 1,
+          "campos": [ { "key": "centro", "label": "Centro educativo", "tipo": "texto" }, { "key": "fechas", "label": "Años (inicio – término)", "tipo": "texto" } ] },
+        { "key": "tecnicos", "label": "Estudios técnicos", "tipo": "grupo", "min": 0, "max": 2,
+          "campos": [
+            { "key": "carrera", "label": "Carrera", "tipo": "texto" },
+            { "key": "grado", "label": "Grado obtenido o último ciclo", "tipo": "texto" },
+            { "key": "institucion", "label": "Instituto", "tipo": "texto" },
+            { "key": "fechas", "label": "Años (inicio – término)", "tipo": "texto" }
+          ] },
+        { "key": "universitarios", "label": "Estudios universitarios", "tipo": "grupo", "min": 0, "max": 2,
+          "campos": [
+            { "key": "carrera", "label": "Carrera", "tipo": "texto" },
+            { "key": "grado", "label": "Grado obtenido o último ciclo", "tipo": "texto" },
+            { "key": "institucion", "label": "Universidad", "tipo": "texto" },
+            { "key": "fechas", "label": "Años (inicio – término)", "tipo": "texto" }
+          ] },
+        { "key": "otrosEstudios", "label": "Otros estudios (postgrado, cursos, especializaciones)", "tipo": "grupo", "min": 0, "max": 3,
+          "campos": [
+            { "key": "curso", "label": "Grado o nombre del curso", "tipo": "texto" },
+            { "key": "institucion", "label": "Institución", "tipo": "texto" },
+            { "key": "fechas", "label": "Fechas (inicio – término)", "tipo": "texto" }
+          ] },
+        { "key": "idiomas", "label": "Idiomas", "tipo": "grupo", "min": 0, "max": 2,
+          "campos": [
+            { "key": "idioma", "label": "Idioma", "tipo": "texto" },
+            { "key": "institucion", "label": "Institución", "tipo": "texto" },
+            { "key": "nivel", "label": "Nivel obtenido", "tipo": "seleccion", "opciones": ["Básico", "Intermedio", "Avanzado", "Nativo"] }
+          ] }
+      ]
+    },
+    {
+      "id": "experiencia",
+      "titulo": "Experiencia laboral",
+      "icono": "briefcase",
+      "campos": [
+        { "key": "tiempoExperiencia", "label": "Tiempo total de experiencia laboral", "tipo": "texto", "requerido": true, "placeholder": "Ej.: 3 años y 6 meses / Sin experiencia", "ancho": "completo" },
+        { "key": "experiencias", "label": "Empresas donde trabajaste", "tipo": "grupo", "min": 0, "max": 4,
+          "campos": [
+            { "key": "empresa", "label": "Empresa", "tipo": "texto" },
+            { "key": "cargo", "label": "Cargo", "tipo": "texto" },
+            { "key": "fechas", "label": "Fechas (inicio – término)", "tipo": "texto", "placeholder": "03/2021 – 08/2024" }
+          ] },
+        { "key": "referencias", "label": "Referencias laborales (jefes o supervisores)", "tipo": "grupo", "min": 0, "max": 3,
+          "campos": [
+            { "key": "nombre", "label": "Nombres y apellidos", "tipo": "texto" },
+            { "key": "empresa", "label": "Empresa", "tipo": "texto" },
+            { "key": "cargo", "label": "Cargo", "tipo": "texto" },
+            { "key": "telefono", "label": "Teléfono", "tipo": "telefono" }
+          ] }
+      ]
+    },
+    {
+      "id": "pensiones",
+      "titulo": "Pensiones y banco",
+      "icono": "bank",
+      "campos": [
+        { "key": "recibioBoletin", "label": "Recibí el Boletín Informativo de los Sistemas Pensionarios (SPP-SNP)", "tipo": "casilla", "ancho": "completo" },
+        { "key": "opcionPension", "label": "Sistema de pensiones", "tipo": "opciones", "requerido": true, "ancho": "completo",
+          "opciones": ["Afiliarme al Sistema Privado de Pensiones (AFP)", "Permanecer en la AFP donde estoy afiliado", "Afiliarme al Sistema Nacional de Pensiones (ONP)", "Permanecer en el Sistema Nacional de Pensiones (ONP)"] },
+        { "key": "afp", "label": "AFP", "tipo": "seleccion", "opciones": ["PRIMA", "INTEGRA", "PROFUTURO", "HABITAT"], "visibleSi": { "campo": "opcionPension", "contiene": "AFP" }, "requerido": true },
+        { "key": "bancoHaberes", "label": "Banco para el depósito de tu sueldo", "tipo": "seleccion", "requerido": true, "opciones": ["BCP", "BBVA", "Interbank", "Scotiabank"] },
+        { "key": "bancoCTS", "label": "Banco para el depósito de tu CTS", "tipo": "seleccion", "requerido": true, "opciones": ["BCP", "BBVA", "Interbank", "Scotiabank", "Caja Arequipa", "Caja Huancayo", "Caja Piura", "Otro"] },
+        { "key": "bancoCTSOtro", "label": "Nombre del banco o caja para la CTS", "tipo": "texto", "visibleSi": { "campo": "bancoCTS", "igual": "Otro" }, "requerido": true },
+        { "key": "monedaCTS", "label": "Moneda de la cuenta CTS", "tipo": "opciones", "requerido": true, "opciones": ["Soles", "Dólares"] }
+      ]
+    }
+  ],
+  "consentimiento": "Declaro que la información registrada es verdadera y autorizo a Corporación de Industrias Plásticas S.A. a tratarla para mi proceso de ingreso, conforme a la Ley N.° 29733."
+}
